@@ -15,16 +15,10 @@ import javax.inject.Inject
  * Email:sunmeng995@gmail.com
  * Description:
  */
-class MyApp : Application(), HasActivityInjector {
-
-    @Inject
-    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
-
-    override fun activityInjector(): AndroidInjector<Activity> = dispatchingAndroidInjector
-
-    override fun onCreate() {
-        super.onCreate()
-        DaggerAppComponent.builder().application(this).build().inject(this)
+class MyApp : DaggerApplication() {
+    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
+        return DaggerAppComponent.builder().create(this)
     }
+
 
 }

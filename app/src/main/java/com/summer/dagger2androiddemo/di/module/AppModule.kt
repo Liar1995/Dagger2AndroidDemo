@@ -1,7 +1,6 @@
 package com.summer.dagger2androiddemo.di.module
 
 import com.summer.dagger2androiddemo.MyApp
-import com.summer.dagger2androiddemo.di.component.MainActivityComponent
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -14,7 +13,6 @@ import javax.inject.Singleton
 @Module
 class AppModule {
 
-    @Singleton
     @Provides
     fun provideContext(app: MyApp) = app
 
